@@ -43,8 +43,20 @@ class HomeVC: UIViewController {
     @IBAction func onSearchBtnClicked(_ sender: UIButton) {
         print("HomeVC - onSearchBtnClicked() called \(searchFilterSegment.selectedSegmentIndex)")
         //미리 스토리보드에서 정해둔 세그로 화면전환
-        
-        
+        var segueID : String = ""
+        switch searchFilterSegment.selectedSegmentIndex {
+        case 0:
+            print("사진 화면으로이동")
+            segueID = "goToPhotoCollectionVC"
+        case 1:
+            print("사용자 화면으로 이동")
+            segueID = "goToUserListVC"
+        default:
+            print("default")
+            segueID = "goToPhotoCollectionVC"
+        }
+        //세그를 이용한 네비게이션 화면이동
+        self.performSegue(withIdentifier: segueID, sender: self)
     }
 }
 
