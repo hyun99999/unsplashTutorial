@@ -8,13 +8,43 @@
 import UIKit
 
 class HomeVC: UIViewController {
-
+    @IBOutlet weak var searchFilterSegment: UISegmentedControl!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var searchIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("HomeVC - viewDidLoad() called")
+        
+        searchBtn.layer.cornerRadius = 10
+        searchBar.searchBarStyle = .minimal
+        
     }
-
-
+//MARK: - @IBAction methods
+    @IBAction func searchFilterValueChanged(_ sender: UISegmentedControl) {
+        print("HomeVC - searchFilterValueChanged() called \(sender.selectedSegmentIndex )")
+        var searchBarTitle = ""
+        switch sender.selectedSegmentIndex {
+        case 0:
+            searchBarTitle = "사진 키워드"
+        case 1:
+            searchBarTitle = "사용자 이름"
+        default:
+            searchBarTitle = "사진 키워드"
+        }
+        self.searchBar.placeholder = searchBarTitle + " 입력"
+        //키보드 포커싱을 준다.(키보드가 가리면 알아서 화면 포커싱이동)
+        self.searchBar.becomeFirstResponder()
+        //self.searchBar.resignFirstResponder() 포커싱을 해제
+    }
+    
+    @IBAction func onSearchBtnClicked(_ sender: UIButton) {
+        print("HomeVC - onSearchBtnClicked() called \(searchFilterSegment.selectedSegmentIndex)")
+        //미리 스토리보드에서 정해둔 세그로 화면전환
+        
+        
+    }
 }
 
