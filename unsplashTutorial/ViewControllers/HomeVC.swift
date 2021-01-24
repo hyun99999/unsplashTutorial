@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchFilterSegment: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchBtn: UIButton!
@@ -20,6 +20,8 @@ class HomeVC: UIViewController {
         
         searchBtn.layer.cornerRadius = 10
         searchBar.searchBarStyle = .minimal
+        //searchBar delegate 연결
+        self.searchBar.delegate = self
         
     }
 //MARK: - @IBAction methods
@@ -35,9 +37,8 @@ class HomeVC: UIViewController {
             searchBarTitle = "사진 키워드"
         }
         self.searchBar.placeholder = searchBarTitle + " 입력"
-        //키보드 포커싱을 준다.(키보드가 가리면 알아서 화면 포커싱이동)
+        //키보드 포커싱을 준다. searchFilter 값이 변할경우 즉 sindicatior 가 변할 때 키보드가 올라온다.
         self.searchBar.becomeFirstResponder()
-        //self.searchBar.resignFirstResponder() 포커싱을 해제
     }
     
     @IBAction func onSearchBtnClicked(_ sender: UIButton) {
@@ -57,6 +58,19 @@ class HomeVC: UIViewController {
         }
         //세그를 이용한 네비게이션 화면이동
         self.performSegue(withIdentifier: segueID, sender: self)
+    }
+    
+    //MAKR: - UISearchBar Delegate methods
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("HomeVC - searchBar textDidChange() searchText: \(searchText)")
+        
+        if searchText.isEmpty {
+            self.searchBtn.isHidden = true
+            //키보드 포커싱 해제
+            searchBar.resignFirstResponder()
+        } else {
+            self.searchBtn.isHidden = false
+        }
     }
 }
 

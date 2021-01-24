@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -52,7 +52,6 @@
 				617B2DD34E1CE43C37ADED85 /* Pods-unsplashTutorial.debug.xcconfig */,
 				DE223E7837339F59BF4FD544 /* Pods-unsplashTutorial.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -62,6 +61,16 @@
 				699976B7E09137A79FCEB4E6 /* Pods_unsplashTutorial.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F80BC68A25BDCD0500384045 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F84EB35725BC28A0000702A2 /* HomeVC.swift */,
+				F84EB36A25BC2C4A000702A2 /* UserListVC.swift */,
+				F84EB36D25BC2CB0000702A2 /* PhotoCollectionVC.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		F84EB34725BC289F000702A2 = {
@@ -85,15 +94,13 @@
 		F84EB35225BC28A0000702A2 /* unsplashTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				F80BC68A25BDCD0500384045 /* ViewControllers */,
 				F84EB35325BC28A0000702A2 /* AppDelegate.swift */,
 				F84EB35525BC28A0000702A2 /* SceneDelegate.swift */,
-				F84EB35725BC28A0000702A2 /* HomeVC.swift */,
 				F84EB35925BC28A0000702A2 /* Main.storyboard */,
 				F84EB35C25BC28A4000702A2 /* Assets.xcassets */,
 				F84EB35E25BC28A4000702A2 /* LaunchScreen.storyboard */,
 				F84EB36125BC28A4000702A2 /* Info.plist */,
-				F84EB36A25BC2C4A000702A2 /* UserListVC.swift */,
-				F84EB36D25BC2CB0000702A2 /* PhotoCollectionVC.swift */,
 			);
 			path = unsplashTutorial;
 			sourceTree = "<group>";
