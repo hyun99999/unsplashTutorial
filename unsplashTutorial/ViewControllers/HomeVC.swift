@@ -21,14 +21,24 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("HomeVC - viewDidLoad() called")
-        
+        config()
+    }
+
+    //MARK: - fileprivate methods
+    fileprivate func config(){
+        //UI설정
         searchBtn.layer.cornerRadius = 10
         searchBar.searchBarStyle = .minimal
         //searchBar delegate 연결
         self.searchBar.delegate = self
-        
+        //UIGestureReconizerDelegate 연결
+        self.keyboardDismissTabGesture.delegate = self
+        //최상단 뷰에 접근. 누르면 키보드를 내리기 위해서
+        self.view.addGestureRecognizer(keyboardDismissTabGesture)
+       //화면 로드 시 키보드 포커싱 추가
+        self.searchBar.becomeFirstResponder()
     }
-    //MARK: - fileprivate methods
+    
     fileprivate func pushVC() {
         //미리 스토리보드에서 정해둔 세그로 화면이동
         var segueID : String = ""
@@ -49,7 +59,7 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
     
     //MARK: - @IBAction methods
     @IBAction func searchFilterValueChanged(_ sender: UISegmentedControl) {
-        print("HomeVC - searchFilterValueChanged() called \(sender.selectedSegmentIndex )")
+//        print("HomeVC - searchFilterValueChanged() called \(sender.selectedSegmentIndex )")
         var searchBarTitle = ""
         switch sender.selectedSegmentIndex {
         case 0:
@@ -71,7 +81,6 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
     }
     
     //MAKR: - UISearchBar Delegate methods
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("HomeVC - searchBarSearchButtonClicked() called")
         guard let userInputString = searchBar.text else { return }
@@ -83,19 +92,22 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
             searchBar.resignFirstResponder()
         }
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("HomeVC - searchBar textDidChange() searchText: \(searchText)")
         
         if searchText.isEmpty {
             self.searchBtn.isHidden = true
+            //약간의 딜레이를 주어서 비동기 처리할 것. searchBar 의 전체삭제를 누르면 삭제되서 내려가야하는데 bar 를 누르는 것이라서 키보드가 내려가지 않는 문제.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+                                            searchBar.resignFirstResponder()
+            })
             //키보드 포커싱 해제
-            searchBar.resignFirstResponder()
         } else {
             self.searchBtn.isHidden = false
         }
     }
     
-    //글자입력 제한
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let inputTextCount = searchBar.text?.appending(text).count ?? 0
         print("shouldChangeTextIn: \(inputTextCount)")
@@ -111,6 +123,23 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
             return false
         }
         //return inputTextCount <= 12 와 같다.
+    }
+    
+    //MARK: - UIGestureReconizerDelegate methods
+    //keyboard dismiss 를 위한 제스쳐 등록
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        print("HomeVC - gestureRecongnizer() called")
+        
+        //특정한 요소에 대해서 예외처리(searchBar, segmentIndicator)
+        if touch.view?.isDescendant(of: searchFilterSegment) == true {
+            return false
+        } else if touch.view?.isDescendant(of: searchBar) == true {
+            return false
+        } else {
+            view.endEditing(true)
+            return true
+        }
+        
     }
 }
 
