@@ -8,12 +8,15 @@
 import UIKit
 import Toast_Swift
 
-class HomeVC: UIViewController, UISearchBarDelegate {
+class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var searchFilterSegment: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var searchIndicator: UIActivityIndicatorView!
     
+    var keyboardDismissTabGesture : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: nil)
+    
+    //MARK: - override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
