@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class HomeVC: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchFilterSegment: UISegmentedControl!
@@ -24,7 +25,26 @@ class HomeVC: UIViewController, UISearchBarDelegate {
         self.searchBar.delegate = self
         
     }
-//MARK: - @IBAction methods
+    //MARK: - fileprivate methods
+    fileprivate func pushVC() {
+        //미리 스토리보드에서 정해둔 세그로 화면이동
+        var segueID : String = ""
+        switch searchFilterSegment.selectedSegmentIndex {
+        case 0:
+            print("사진 화면으로이동")
+            segueID = "goToPhotoCollectionVC"
+        case 1:
+            print("사용자 화면으로 이동")
+            segueID = "goToUserListVC"
+        default:
+            print("default")
+            segueID = "goToPhotoCollectionVC"
+        }
+        //세그를 이용한 네비게이션 화면이동
+        self.performSegue(withIdentifier: segueID, sender: self)
+    }
+    
+    //MARK: - @IBAction methods
     @IBAction func searchFilterValueChanged(_ sender: UISegmentedControl) {
         print("HomeVC - searchFilterValueChanged() called \(sender.selectedSegmentIndex )")
         var searchBarTitle = ""
@@ -43,24 +63,23 @@ class HomeVC: UIViewController, UISearchBarDelegate {
     
     @IBAction func onSearchBtnClicked(_ sender: UIButton) {
         print("HomeVC - onSearchBtnClicked() called \(searchFilterSegment.selectedSegmentIndex)")
-        //미리 스토리보드에서 정해둔 세그로 화면전환
-        var segueID : String = ""
-        switch searchFilterSegment.selectedSegmentIndex {
-        case 0:
-            print("사진 화면으로이동")
-            segueID = "goToPhotoCollectionVC"
-        case 1:
-            print("사용자 화면으로 이동")
-            segueID = "goToUserListVC"
-        default:
-            print("default")
-            segueID = "goToPhotoCollectionVC"
-        }
-        //세그를 이용한 네비게이션 화면이동
-        self.performSegue(withIdentifier: segueID, sender: self)
+        //화면 이동
+        pushVC()
     }
     
     //MAKR: - UISearchBar Delegate methods
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("HomeVC - searchBarSearchButtonClicked() called")
+        guard let userInputString = searchBar.text else { return }
+        if userInputString.isEmpty {
+            self.view.makeToast("🤨 검색 키워드를 입력해주세요.", duration: 1.0, position: .center)
+        } else {
+            //입력값이 있다면 화면이동
+            pushVC()
+            searchBar.resignFirstResponder()
+        }
+    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("HomeVC - searchBar textDidChange() searchText: \(searchText)")
         
@@ -71,6 +90,24 @@ class HomeVC: UIViewController, UISearchBarDelegate {
         } else {
             self.searchBtn.isHidden = false
         }
+    }
+    
+    //글자입력 제한
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let inputTextCount = searchBar.text?.appending(text).count ?? 0
+        print("shouldChangeTextIn: \(inputTextCount)")
+        //위의 searchBar 함수보다 이 함수가 더 빠르기 때문에(shoudlChangedTextIn) 여기에 설정해야 13자가 화면상으로 입력되기 전에 설정 가능.
+        if inputTextCount >= 12 {
+            // toast with a specific duration and position
+            self.view.makeToast("🧐 12자까지만 입력가능합니다.", duration: 1.0, position: .center)
+        }
+        //12자까지만 입력. 13자부터는 false 로 searchBar 에 입력이 되지 않는다.
+        if inputTextCount <= 12 {
+            return true
+        } else {
+            return false
+        }
+        //return inputTextCount <= 12 와 같다.
     }
 }
 
