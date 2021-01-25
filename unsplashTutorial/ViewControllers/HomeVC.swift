@@ -24,6 +24,11 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         self.config()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //화면 로드 시 키보드 포커싱 추가
+         self.searchBar.becomeFirstResponder()
+    }
+    
     //세그로 다른 화면으로 넘어가기 전에 준비한다.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("HomeVC - prepare() called / segue. identifier: \(segue.identifier)")
@@ -31,12 +36,12 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         case SEGUE_ID.USER_LIST_VC:
             //다음 화면의 뷰 컨트롤러를 가져온다.
             let nextVC = segue.destination as! UserListVC
-            guard let userInputValue = self.searchBar.text else {
-                return
-            }
+            guard let userInputValue = self.searchBar.text else { return }
             nextVC.vcTitle = userInputValue + " 👨🏻‍💻"
-        //case SEGUE_ID.PHOTO_COLLECTION_VC :
-            
+        case SEGUE_ID.PHOTO_COLLECTION_VC :
+            let nextVC = segue.destination as! PhotoCollectionVC
+            guard let userInputValue = self.searchBar.text else { return }
+            nextVC.vcTitle = userInputValue + " 🏞"
         default:
             print("default")
         }
@@ -69,8 +74,6 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         self.keyboardDismissTabGesture.delegate = self
         //최상단 뷰에 접근. 누르면 키보드를 내리기 위해서
         self.view.addGestureRecognizer(keyboardDismissTabGesture)
-       //화면 로드 시 키보드 포커싱 추가
-        self.searchBar.becomeFirstResponder()
     }
     
     fileprivate func pushVC() {
@@ -91,12 +94,23 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         self.performSegue(withIdentifier: segueID, sender: self)
     }
     
-    @objc func keyboardWillShowHandle(notification: UNUserNotificationCenter) {
+    @objc func keyboardWillShowHandle(notification: NSNotification) {
         print("HomeVC - keyboardSWillShowHandle() called")
-        
+        //버튼을 덮은 키보드 사이즈만큼 y축을 올리면 된다.
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            print("keyboardSize.height: \(keyboardSize.height)")
+            print("searchBtn.frame.origin.y: \(searchBtn.frame.origin.y)")
+            
+            if keyboardSize.height < searchBtn.frame.origin.y {
+                print("키보드가 버튼을 덮었다.")
+                let distance = keyboardSize.height - searchBtn.frame.origin.y
+                self.view.frame.origin.y = distance
+            }
+        }
     }
     @objc func keyboardWillHideHandle(notification: UNUserNotificationCenter) {
         print("HomeVC - keyboardWillHideHandle() called")
+        self.view.frame.origin.y = 0
     }
     
     
@@ -123,7 +137,7 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         pushVC()
     }
     
-    //MAKR: - UISearchBar Delegate methods
+    //MARK: - UISearchBar Delegate methods
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("HomeVC - searchBarSearchButtonClicked() called")
         guard let userInputString = searchBar.text else { return }

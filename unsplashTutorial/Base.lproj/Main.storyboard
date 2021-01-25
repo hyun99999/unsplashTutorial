@@ -103,7 +103,7 @@
         <!--Photo CollectionVC-->
         <scene sceneID="VaE-bN-ooe">
             <objects>
-                <viewController id="aTb-eV-W08" customClass="PhotoCollectionVC" sceneMemberID="viewController">
+                <viewController id="aTb-eV-W08" customClass="PhotoCollectionVC" customModule="unsplashTutorial" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Rc-pA-kQJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
