@@ -42,6 +42,22 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("HomeVC - viewWillAppear() called")
+        //키보드 올라가는 이벤트를 받는 처리
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowHandle(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideHandle(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("HomeVC - viewWillDisappear() called")
+        //keyboard notification remove
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     //MARK: - fileprivate methods
     fileprivate func config(){
         //UI설정
@@ -74,6 +90,15 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         //세그를 이용한 네비게이션 화면이동
         self.performSegue(withIdentifier: segueID, sender: self)
     }
+    
+    @objc func keyboardWillShowHandle(notification: UNUserNotificationCenter) {
+        print("HomeVC - keyboardSWillShowHandle() called")
+        
+    }
+    @objc func keyboardWillHideHandle(notification: UNUserNotificationCenter) {
+        print("HomeVC - keyboardWillHideHandle() called")
+    }
+    
     
     //MARK: - @IBAction methods
     @IBAction func searchFilterValueChanged(_ sender: UISegmentedControl) {
