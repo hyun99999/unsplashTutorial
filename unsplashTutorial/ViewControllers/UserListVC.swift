@@ -8,10 +8,9 @@
 
 import UIKit
 
-class UserListVC: UIViewController {
+class UserListVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         print("UserListVC - viewDIdLoad() called")
     }
 }

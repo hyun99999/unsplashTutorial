@@ -21,7 +21,25 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("HomeVC - viewDidLoad() called")
-        config()
+        self.config()
+    }
+    
+    //세그로 다른 화면으로 넘어가기 전에 준비한다.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("HomeVC - prepare() called / segue. identifier: \(segue.identifier)")
+        switch segue.identifier {
+        case SEGUE_ID.USER_LIST_VC:
+            //다음 화면의 뷰 컨트롤러를 가져온다.
+            let nextVC = segue.destination as! UserListVC
+            guard let userInputValue = self.searchBar.text else {
+                return
+            }
+            nextVC.vcTitle = userInputValue + " 👨🏻‍💻"
+        //case SEGUE_ID.PHOTO_COLLECTION_VC :
+            
+        default:
+            print("default")
+        }
     }
 
     //MARK: - fileprivate methods
