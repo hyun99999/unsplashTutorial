@@ -134,21 +134,36 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
     
     @IBAction func onSearchBtnClicked(_ sender: UIButton) {
         print("HomeVC - onSearchBtnClicked() called \(searchFilterSegment.selectedSegmentIndex)")
-        let url = API.BASE_URL + "search/photos"
+//        let url = API.BASE_URL + "search/photos"
+        
         guard let userInput = self.searchBar.text else { return }
+        
         //딕셔너리
-        let queryParam = ["query" : userInput,"client_id" : API.CLIENT_ID]
-//        AF.request(url, method: .get, parameters: queryParam).responseJSON(completionHandler: {
+//        let queryParam = ["query" : userInput,"client_id" : API.CLIENT_ID]
+
+        //        AF.request(url, method: .get, parameters: queryParam).responseJSON(completionHandler: {
 //            response in debugPrint(response)
 //        })
-        //위의 주석과 같이 AF 를 미리만들어둔 클래스로 호출.
-        //우리가 설정한 baseinterceptor 가 적용됨.
-        MyAlamofireManager
-            .shared
-            .session
-            .request(url).responseJSON(completionHandler: {
-                response in debugPrint(response)
-            })
+        var urlToCall: URLRequestConvertible?
+        switch searchFilterSegment.selectedSegmentIndex {
+        case 0:
+            urlToCall = MySearchRouter.searchPhotos(term: userInput)
+        case 1:
+            urlToCall = MySearchRouter.searchUsers(term: userInput)
+        default:
+            print("default")
+        }
+        if let urlConvertible = urlToCall {
+            //위의 주석과 같이 AF 를 미리만들어둔 클래스로 호출.
+            //우리가 설정한 baseinterceptor 가 적용됨.
+            MyAlamofireManager
+                .shared
+                .session
+                .request(urlConvertible).responseJSON(completionHandler: {
+                    response in
+    //                debugPrint(response)
+                })
+        }
         
         //화면 이동
         pushVC()
