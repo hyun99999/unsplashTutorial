@@ -7,6 +7,7 @@
 
 import UIKit
 import Toast_Swift
+import Alamofire
 
 class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var searchFilterSegment: UISegmentedControl!
@@ -31,7 +32,7 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
     
     //세그로 다른 화면으로 넘어가기 전에 준비한다.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("HomeVC - prepare() called / segue. identifier: \(segue.identifier)")
+        print("HomeVC - prepare() called / segue.identifier: \(segue.identifier)")
         switch segue.identifier {
         case SEGUE_ID.USER_LIST_VC:
             //다음 화면의 뷰 컨트롤러를 가져온다.
@@ -133,6 +134,14 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
     
     @IBAction func onSearchBtnClicked(_ sender: UIButton) {
         print("HomeVC - onSearchBtnClicked() called \(searchFilterSegment.selectedSegmentIndex)")
+        let url = API.BASE_URL + "search/photos"
+        guard let userInput = self.searchBar.text else { return }
+        //딕셔너리
+        let queryParam = ["query" : userInput,"client_id" : API.CLIENT_ID]
+        AF.request(url, method: .get, parameters: queryParam).responseJSON(completionHandler: {
+            response in debugPrint(response)
+        })
+        
         //화면 이동
         pushVC()
     }

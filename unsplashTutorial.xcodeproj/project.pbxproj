@@ -18,6 +18,8 @@
 		F84EB36E25BC2CB0000702A2 /* PhotoCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84EB36D25BC2CB0000702A2 /* PhotoCollectionVC.swift */; };
 		F85561E725BE528D00D4D1DA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85561E625BE528D00D4D1DA /* Constants.swift */; };
 		F85561EC25BE55BC00D4D1DA /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85561EB25BE55BC00D4D1DA /* BaseVC.swift */; };
+		F87CD80B25BFD33900723CC3 /* MyAlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD80A25BFD33900723CC3 /* MyAlamofireManager.swift */; };
+		F87CD80E25BFD5BB00723CC3 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD80D25BFD5BB00723CC3 /* BaseInterceptor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		F84EB36D25BC2CB0000702A2 /* PhotoCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionVC.swift; sourceTree = "<group>"; };
 		F85561E625BE528D00D4D1DA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F85561EB25BE55BC00D4D1DA /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		F87CD80A25BFD33900723CC3 /* MyAlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlamofireManager.swift; sourceTree = "<group>"; };
+		F87CD80D25BFD5BB00723CC3 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		F84EB35225BC28A0000702A2 /* unsplashTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				F87CD80925BFD31F00723CC3 /*  API */,
 				F85561E525BE526F00D4D1DA /* Utils */,
 				F80BC68A25BDCD0500384045 /* ViewControllers */,
 				F84EB35325BC28A0000702A2 /* AppDelegate.swift */,
@@ -117,6 +122,15 @@
 				F85561E625BE528D00D4D1DA /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		F87CD80925BFD31F00723CC3 /*  API */ = {
+			isa = PBXGroup;
+			children = (
+				F87CD80A25BFD33900723CC3 /* MyAlamofireManager.swift */,
+				F87CD80D25BFD5BB00723CC3 /* BaseInterceptor.swift */,
+			);
+			path = " API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,8 +249,10 @@
 			files = (
 				F84EB35825BC28A0000702A2 /* HomeVC.swift in Sources */,
 				F84EB35425BC28A0000702A2 /* AppDelegate.swift in Sources */,
+				F87CD80E25BFD5BB00723CC3 /* BaseInterceptor.swift in Sources */,
 				F84EB35625BC28A0000702A2 /* SceneDelegate.swift in Sources */,
 				F84EB36B25BC2C4A000702A2 /* UserListVC.swift in Sources */,
+				F87CD80B25BFD33900723CC3 /* MyAlamofireManager.swift in Sources */,
 				F84EB36E25BC2CB0000702A2 /* PhotoCollectionVC.swift in Sources */,
 				F85561EC25BE55BC00D4D1DA /* BaseVC.swift in Sources */,
 				F85561E725BE528D00D4D1DA /* Constants.swift in Sources */,
