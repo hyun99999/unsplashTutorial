@@ -20,6 +20,8 @@
 		F85561EC25BE55BC00D4D1DA /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85561EB25BE55BC00D4D1DA /* BaseVC.swift */; };
 		F87CD80B25BFD33900723CC3 /* MyAlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD80A25BFD33900723CC3 /* MyAlamofireManager.swift */; };
 		F87CD80E25BFD5BB00723CC3 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD80D25BFD5BB00723CC3 /* BaseInterceptor.swift */; };
+		F87CD81125C03ABE00723CC3 /* MyLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD81025C03ABE00723CC3 /* MyLogger.swift */; };
+		F87CD81425C03CC100723CC3 /* MySearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD81325C03CC100723CC3 /* MySearchRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		F85561EB25BE55BC00D4D1DA /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		F87CD80A25BFD33900723CC3 /* MyAlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlamofireManager.swift; sourceTree = "<group>"; };
 		F87CD80D25BFD5BB00723CC3 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
+		F87CD81025C03ABE00723CC3 /* MyLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLogger.swift; sourceTree = "<group>"; };
+		F87CD81325C03CC100723CC3 /* MySearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySearchRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 			children = (
 				F87CD80A25BFD33900723CC3 /* MyAlamofireManager.swift */,
 				F87CD80D25BFD5BB00723CC3 /* BaseInterceptor.swift */,
+				F87CD81025C03ABE00723CC3 /* MyLogger.swift */,
+				F87CD81325C03CC100723CC3 /* MySearchRouter.swift */,
 			);
 			path = " API";
 			sourceTree = "<group>";
@@ -249,11 +255,13 @@
 			files = (
 				F84EB35825BC28A0000702A2 /* HomeVC.swift in Sources */,
 				F84EB35425BC28A0000702A2 /* AppDelegate.swift in Sources */,
+				F87CD81425C03CC100723CC3 /* MySearchRouter.swift in Sources */,
 				F87CD80E25BFD5BB00723CC3 /* BaseInterceptor.swift in Sources */,
 				F84EB35625BC28A0000702A2 /* SceneDelegate.swift in Sources */,
 				F84EB36B25BC2C4A000702A2 /* UserListVC.swift in Sources */,
 				F87CD80B25BFD33900723CC3 /* MyAlamofireManager.swift in Sources */,
 				F84EB36E25BC2CB0000702A2 /* PhotoCollectionVC.swift in Sources */,
+				F87CD81125C03ABE00723CC3 /* MyLogger.swift in Sources */,
 				F85561EC25BE55BC00D4D1DA /* BaseVC.swift in Sources */,
 				F85561E725BE528D00D4D1DA /* Constants.swift in Sources */,
 			);

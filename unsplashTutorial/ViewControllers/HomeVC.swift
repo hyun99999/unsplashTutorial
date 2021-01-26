@@ -138,9 +138,17 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         guard let userInput = self.searchBar.text else { return }
         //딕셔너리
         let queryParam = ["query" : userInput,"client_id" : API.CLIENT_ID]
-        AF.request(url, method: .get, parameters: queryParam).responseJSON(completionHandler: {
-            response in debugPrint(response)
-        })
+//        AF.request(url, method: .get, parameters: queryParam).responseJSON(completionHandler: {
+//            response in debugPrint(response)
+//        })
+        //위의 주석과 같이 AF 를 미리만들어둔 클래스로 호출.
+        //우리가 설정한 baseinterceptor 가 적용됨.
+        MyAlamofireManager
+            .shared
+            .session
+            .request(url).responseJSON(completionHandler: {
+                response in debugPrint(response)
+            })
         
         //화면 이동
         pushVC()
