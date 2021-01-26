@@ -160,14 +160,14 @@ class HomeVC:  BaseVC, UISearchBarDelegate, UIGestureRecognizerDelegate {
             MyAlamofireManager
                 .shared
                 .session
-                .request(urlConvertible).validate(statusCode: 200...400 ).responseJSON(completionHandler: {
+                .request(urlConvertible).validate(statusCode: 200..<401 ).responseJSON(completionHandler: {
                     response in
     //                debugPrint(response)
                 })
         }
         
         //화면 이동
-        pushVC()
+        //pushVC()
     }
     
     //MARK: - UISearchBar Delegate methods

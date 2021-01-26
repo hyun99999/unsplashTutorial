@@ -18,19 +18,19 @@ class BaseInterceptor: RequestInterceptor {
         request.addValue("application/json; charset=UTF-8", forHTTPHeaderField:"Accept")
         
         //공통 파라미터 추가
-//        var dictionary = [String:String]()
-//        dictionary.updateValue(API.CLIENT_ID, forKey: "client_id")
-//        do {
-//            request = try URLEncodedFormParameterEncoder().encode(dictionary, into: request)
-//        } catch {
-//            print(error)
-//        }
-//        completion(.success(request))
+        var dictionary = [String:String]()
+        dictionary.updateValue(API.CLIENT_ID, forKey: "client_id")
+        do {
+            request = try URLEncodedFormParameterEncoder().encode(dictionary, into: request)
+        } catch {
+            print(error)
+        }
+        completion(.success(request))
     }
     
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         //응답에 대한 결과로 정상적인 작업이 되지 않는다면 여기서 설정 가능.
-        print("BseInterceptor - retry() called")
+        print("BaseInterceptor - retry() called")
         guard let statusCode = request.response?.statusCode else {
             completion(.doNotRetry)
             return
