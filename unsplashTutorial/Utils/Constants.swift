@@ -16,3 +16,8 @@ enum API {
     static let CLIENT_ID : String = "JaYJx9tW_zEjHay7jIFDgWbNVjl1YNEAvJFnfZaiQ7g"
     
 }
+enum NOTIFICATION {
+    enum API {
+        static let AUTH_FAIL = "authentication_fail"
+    }
+}

@@ -9,7 +9,7 @@ import UIKit
 import Toast_Swift
 import Alamofire
 
-class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
+class HomeVC:  BaseVC, UISearchBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var searchFilterSegment: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchBtn: UIButton!
@@ -156,10 +156,11 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         if let urlConvertible = urlToCall {
             //위의 주석과 같이 AF 를 미리만들어둔 클래스로 호출.
             //우리가 설정한 baseinterceptor 가 적용됨.
+            //validate() 를 통해서 key값의 예외처리 가능. -> 실패 시 myApiSearchLogger 의 retry 가 발생
             MyAlamofireManager
                 .shared
                 .session
-                .request(urlConvertible).responseJSON(completionHandler: {
+                .request(urlConvertible).validate(statusCode: 200...400 ).responseJSON(completionHandler: {
                     response in
     //                debugPrint(response)
                 })
