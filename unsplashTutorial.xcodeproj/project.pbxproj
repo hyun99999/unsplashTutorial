@@ -22,6 +22,7 @@
 		F87CD80E25BFD5BB00723CC3 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD80D25BFD5BB00723CC3 /* BaseInterceptor.swift */; };
 		F87CD81125C03ABE00723CC3 /* MyLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD81025C03ABE00723CC3 /* MyLogger.swift */; };
 		F87CD81425C03CC100723CC3 /* MySearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD81325C03CC100723CC3 /* MySearchRouter.swift */; };
+		F87CD81725C04DDA00723CC3 /* MyApiStatusLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87CD81625C04DDA00723CC3 /* MyApiStatusLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		F87CD80D25BFD5BB00723CC3 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		F87CD81025C03ABE00723CC3 /* MyLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLogger.swift; sourceTree = "<group>"; };
 		F87CD81325C03CC100723CC3 /* MySearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySearchRouter.swift; sourceTree = "<group>"; };
+		F87CD81625C04DDA00723CC3 /* MyApiStatusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApiStatusLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				F87CD80D25BFD5BB00723CC3 /* BaseInterceptor.swift */,
 				F87CD81025C03ABE00723CC3 /* MyLogger.swift */,
 				F87CD81325C03CC100723CC3 /* MySearchRouter.swift */,
+				F87CD81625C04DDA00723CC3 /* MyApiStatusLogger.swift */,
 			);
 			path = " API";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				F84EB36E25BC2CB0000702A2 /* PhotoCollectionVC.swift in Sources */,
 				F87CD81125C03ABE00723CC3 /* MyLogger.swift in Sources */,
 				F85561EC25BE55BC00D4D1DA /* BaseVC.swift in Sources */,
+				F87CD81725C04DDA00723CC3 /* MyApiStatusLogger.swift in Sources */,
 				F85561E725BE528D00D4D1DA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
