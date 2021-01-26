@@ -31,6 +31,12 @@ unsplash 오픈 라이브러리를 활용한 image free download 튜토리얼
 
 ## 완성
 
+- 출처 : 
+- UI :[개발하는정대리]https://www.youtube.com/watch?v=pBG66IYtKlk&list=PLgOlaPUIbynqRzpQBIdEDnjDdkVsjHqxK&index=24
+- Alamofire :[개발하는정대리]https://www.youtube.com/watch?v=WR4_KenX0G8&list=PLgOlaPUIbynqRzpQBIdEDnjDdkVsjHqxK&index=25
+- JSON 파싱 :[개발하는정대리]https://www.youtube.com/watch?v=ww2md779iRs&list=PLgOlaPUIbynqRzpQBIdEDnjDdkVsjHqxK&index=26
+
+
 ## 에러해결
 - Unknown class 'ViewController' in Interface Builder file
   - xcode 의 버그라는 의견이 지배적이라고 한다.
@@ -40,3 +46,4 @@ unsplash 오픈 라이브러리를 활용한 image free download 튜토리얼
 <img src = "https://user-images.githubusercontent.com/69136340/105674247-8c2da980-5f2a-11eb-9541-71683fc670eb.png" width="900">
 
 - 참고 : https://points.tistory.com/10
+
