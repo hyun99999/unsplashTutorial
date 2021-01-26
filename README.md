@@ -1,13 +1,33 @@
 # unsplashTutorial
 unsplash 오픈 라이브러리를 활용한 image free download 튜토리얼
+  > - Unsplash: https://unsplash.com
+  > - Alamofire: https://www.google.com/search?client=safari&rls=en&q=alamofire&ie=UTF-8&oe=UTF-8
+  > - 
 
 - navigation controller 를 이용.
 - segue 를 이용한 화면 전환.
-- 오픈 라이브러리 toast-swift 를 이용해서 토스트 메시지 사용.
 - dispatch  를 이용해서 searchBar 예외처리.
 - delegate 를 채택해서 
   - UISearchBarDelegate : searchBar 에 대한 접근
   - UIGestureRecognizerDelegate : dismiss 제스처를 등록
+
+### Postman
+- postman 활용해서 api 정보 확인
+<img src = "https://user-images.githubusercontent.com/69136340/105805139-bfcd0a00-5fe4-11eb-8b1a-5f7290fd273d.png" width="700">
+
+### Unsplash
+- Unsplash는 Unsplash 라이선스에 따라 스톡 사진을 공유하는 전용 웹 사이트입니다
+- unsplash 앱 등록 후 key 발급받기
+- unsplash api 사용
+  - 사진: https://unsplash.com/documentation#search-photos
+  - 사용자: https://unsplash.com/documentation#search-users
+
+### toast-swift
+- https://github.com/scalessec/Toast-Swift
+- 오픈 라이브러리 toast-swift 를 이용해서 토스트 메시지 사용.
+
+### Alamofire
+- https://github.com/Alamofire/Alamofire
 
 ## 완성
 
