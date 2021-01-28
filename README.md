@@ -29,7 +29,15 @@ unsplash 오픈 라이브러리를 활용한 image free download 튜토리얼
 ### Alamofire
 - https://github.com/Alamofire/Alamofire
 
+### Swifty-JSON
+-  https://github.com/SwiftyJSON/SwiftyJSON
+
 ## 완성
+- main
+<img src = "https://user-images.githubusercontent.com/69136340/106101214-e7f17000-6180-11eb-9ecd-01f5f529c77c.png" width ="400">
+
+- 예외처리 : 키 값 등 url 오류 시 retry() 를 통해서 toast 메시지 출력.
+<img src = "https://user-images.githubusercontent.com/69136340/106101167-d8722700-6180-11eb-9bae-b3421315d5a1.png" width ="400">
 
 - 출처 : 
 - UI :[개발하는정대리]https://www.youtube.com/watch?v=pBG66IYtKlk&list=PLgOlaPUIbynqRzpQBIdEDnjDdkVsjHqxK&index=24
