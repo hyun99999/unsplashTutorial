@@ -2,7 +2,7 @@
 unsplash 오픈 라이브러리를 활용한 image free download 튜토리얼
   > - Unsplash: https://unsplash.com
   > - Alamofire: https://www.google.com/search?client=safari&rls=en&q=alamofire&ie=UTF-8&oe=UTF-8
-  > - 
+  > - Swifty-JSON: https://github.com/SwiftyJSON/SwiftyJSON
 
 - navigation controller 를 이용.
 - segue 를 이용한 화면 전환.
@@ -10,10 +10,11 @@ unsplash 오픈 라이브러리를 활용한 image free download 튜토리얼
 - delegate 를 채택해서 
   - UISearchBarDelegate : searchBar 에 대한 접근
   - UIGestureRecognizerDelegate : dismiss 제스처를 등록
+- ARC : weak self 를 통해 메모리 카운트를 증가시키지 않는 것도 해봄
 
 ### Postman
 - postman 활용해서 api 정보 확인
-<img src = "https://user-images.githubusercontent.com/69136340/105805139-bfcd0a00-5fe4-11eb-8b1a-5f7290fd273d.png" width="700">
+<img src = "https://user-images.githubusercontent.com/69136340/105805139-bfcd0a00-5fe4-11eb-8b1a-5f7290fd273d.png" width="600">
 
 ### Unsplash
 - Unsplash는 Unsplash 라이선스에 따라 스톡 사진을 공유하는 전용 웹 사이트입니다
@@ -34,7 +35,10 @@ unsplash 오픈 라이브러리를 활용한 image free download 튜토리얼
 
 ## 완성
 - main
-<img src = "https://user-images.githubusercontent.com/69136340/106101214-e7f17000-6180-11eb-9ecd-01f5f529c77c.png" width ="400">
+<img src = "https://user-images.githubusercontent.com/69136340/106101214-e7f17000-6180-11eb-9ecd-01f5f529c77c.png" width ="250">
+
+- Cat 을 unsplash 에 검색해서 json 데이터로 서버에서 가져온다.
+<img src = "https://user-images.githubusercontent.com/69136340/106133344-775e4980-61a8-11eb-88b5-1dbae314d253.png" width="900">
 
 - 예외처리 : 키 값 등 url 오류 시 retry() 를 통해서 toast 메시지 출력.
 <img src = "https://user-images.githubusercontent.com/69136340/106101167-d8722700-6180-11eb-9bae-b3421315d5a1.png" width ="400">
