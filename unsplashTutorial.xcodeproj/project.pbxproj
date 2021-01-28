@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F0DEACAFE47993BA5BBC878C /* Pods_unsplashTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699976B7E09137A79FCEB4E6 /* Pods_unsplashTutorial.framework */; };
+		F83853F125C1870E00DD971F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83853F025C1870E00DD971F /* Photo.swift */; };
+		F83853F525C1876B00DD971F /* MyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83853F425C1876B00DD971F /* MyError.swift */; };
 		F84EB35425BC28A0000702A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84EB35325BC28A0000702A2 /* AppDelegate.swift */; };
 		F84EB35625BC28A0000702A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84EB35525BC28A0000702A2 /* SceneDelegate.swift */; };
 		F84EB35825BC28A0000702A2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84EB35725BC28A0000702A2 /* HomeVC.swift */; };
@@ -29,6 +31,8 @@
 		617B2DD34E1CE43C37ADED85 /* Pods-unsplashTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unsplashTutorial.debug.xcconfig"; path = "Target Support Files/Pods-unsplashTutorial/Pods-unsplashTutorial.debug.xcconfig"; sourceTree = "<group>"; };
 		699976B7E09137A79FCEB4E6 /* Pods_unsplashTutorial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_unsplashTutorial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE223E7837339F59BF4FD544 /* Pods-unsplashTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unsplashTutorial.release.xcconfig"; path = "Target Support Files/Pods-unsplashTutorial/Pods-unsplashTutorial.release.xcconfig"; sourceTree = "<group>"; };
+		F83853F025C1870E00DD971F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		F83853F425C1876B00DD971F /* MyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyError.swift; sourceTree = "<group>"; };
 		F84EB35025BC28A0000702A2 /* unsplashTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = unsplashTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F84EB35325BC28A0000702A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F84EB35525BC28A0000702A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		F83853EF25C186FD00DD971F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F83853F025C1870E00DD971F /* Photo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F84EB34725BC289F000702A2 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +121,7 @@
 		F84EB35225BC28A0000702A2 /* unsplashTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				F83853EF25C186FD00DD971F /* Model */,
 				F87CD80925BFD31F00723CC3 /*  API */,
 				F85561E525BE526F00D4D1DA /* Utils */,
 				F80BC68A25BDCD0500384045 /* ViewControllers */,
@@ -126,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				F85561E625BE528D00D4D1DA /* Constants.swift */,
+				F83853F425C1876B00DD971F /* MyError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -256,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83853F125C1870E00DD971F /* Photo.swift in Sources */,
 				F84EB35825BC28A0000702A2 /* HomeVC.swift in Sources */,
 				F84EB35425BC28A0000702A2 /* AppDelegate.swift in Sources */,
 				F87CD81425C03CC100723CC3 /* MySearchRouter.swift in Sources */,
@@ -263,6 +278,7 @@
 				F84EB35625BC28A0000702A2 /* SceneDelegate.swift in Sources */,
 				F84EB36B25BC2C4A000702A2 /* UserListVC.swift in Sources */,
 				F87CD80B25BFD33900723CC3 /* MyAlamofireManager.swift in Sources */,
+				F83853F525C1876B00DD971F /* MyError.swift in Sources */,
 				F84EB36E25BC2CB0000702A2 /* PhotoCollectionVC.swift in Sources */,
 				F87CD81125C03ABE00723CC3 /* MyLogger.swift in Sources */,
 				F85561EC25BE55BC00D4D1DA /* BaseVC.swift in Sources */,

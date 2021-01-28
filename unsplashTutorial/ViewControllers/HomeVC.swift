@@ -147,24 +147,41 @@ class HomeVC:  BaseVC, UISearchBarDelegate, UIGestureRecognizerDelegate {
         var urlToCall: URLRequestConvertible?
         switch searchFilterSegment.selectedSegmentIndex {
         case 0:
-            urlToCall = MySearchRouter.searchPhotos(term: userInput)
+//            urlToCall = MySearchRouter.searchPhotos(term: userInput)
+            MyAlamofireManager
+                .shared
+                .getPhotos(searchTerm: userInput, completion: {[weak self]
+                result in
+                
+                guard let self = self else {return}
+               
+                switch result {
+                case .success(let fetchedPhotos) :
+                    print("HomceVC - getPhotos.success - fetchedPhotos.count : \(fetchedPhotos.count)")
+                case  .failure(let error):
+                    print("HomeVC - getPhots.failure - error : \(error.rawValue)")
+                    //다음과 같이 self.메소드 등 self 를 사용해야하는 경우 weak self 로 메모리에 계속 두고 있는 것 방지
+                    self.view.makeToast(error.rawValue, duration: 1.0, position: .center)
+                }
+                
+            })
         case 1:
             urlToCall = MySearchRouter.searchUsers(term: userInput)
         default:
             print("default")
         }
-        if let urlConvertible = urlToCall {
-            //위의 주석과 같이 AF 를 미리만들어둔 클래스로 호출.
-            //우리가 설정한 baseinterceptor 가 적용됨.
-            //validate() 를 통해서 key값의 예외처리 가능. -> 실패 시 myApiSearchLogger 의 retry 가 발생
-            MyAlamofireManager
-                .shared
-                .session
-                .request(urlConvertible).validate(statusCode: 200..<401 ).responseJSON(completionHandler: {
-                    response in
-    //                debugPrint(response)
-                })
-        }
+//        if let urlConvertible = urlToCall {
+//            //위의 주석과 같이 AF 를 미리만들어둔 클래스로 호출.
+//            //우리가 설정한 baseinterceptor 가 적용됨.
+//            //validate() 를 통해서 key값의 예외처리 가능. -> 실패 시 myApiSearchLogger 의 retry 가 발생
+//            MyAlamofireManager
+//                .shared
+//                .session
+//                .request(urlConvertible).validate(statusCode: 200..<401 ).responseJSON(completionHandler: {
+//                    response in
+//    //                debugPrint(response)
+//                })
+//        }
         
         //화면 이동
         //pushVC()
